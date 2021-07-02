@@ -1,4 +1,4 @@
-package tkstudy.restservice;
+package tkstudy.restservice.greeting;
 
 import java.util.concurrent.atomic.AtomicLong;
 

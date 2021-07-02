@@ -1,4 +1,4 @@
-package tkstudy.restservice;
+package tkstudy.restservice.greeting;
 
 public class Greeting{
     private final long id;
