@@ -3,6 +3,7 @@ package tkstudy.restservice.accessingDB;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import tkstudy.restservice.accessingDB.dto.UserCreateDto;
 
 @Controller
 @RequestMapping(path = "/user")
@@ -15,6 +16,15 @@ public class MainController {
         User user = new User();
         user.setName(name);
         user.setEmail(email);
+        userRepository.save(user);
+        return "Success";
+    }
+
+    @PostMapping(path="/addWithRequestBody")
+    public @ResponseBody String addNewUser(@RequestBody UserCreateDto userCreateDto){
+        User user = new User();
+        user.setName(userCreateDto.getName());
+        user.setEmail(userCreateDto.getEmail());
         userRepository.save(user);
         return "Success";
     }
