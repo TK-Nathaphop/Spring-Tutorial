@@ -15,3 +15,9 @@ services:
     expose:
       - '3306'
     command: ['mysqld', '--character-set-server=utf8', '--collation-server=utf8_unicode_ci']
+
+  redis:
+    image: redis:alpine
+    command: redis-server --requirepass redis_pw
+    ports:
+      - 6379:6379

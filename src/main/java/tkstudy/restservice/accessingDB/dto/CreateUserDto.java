@@ -1,6 +1,6 @@
 package tkstudy.restservice.accessingDB.dto;
 
-public class UserCreateDto {
+public class CreateUserDto {
     private String name;
     private String email;
 
