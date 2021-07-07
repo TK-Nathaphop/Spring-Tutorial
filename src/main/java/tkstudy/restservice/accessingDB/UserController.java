@@ -1,45 +1,56 @@
 package tkstudy.restservice.accessingDB;
 
+import java.util.Optional;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import tkstudy.restservice.accessingDB.domain.User;
 import tkstudy.restservice.accessingDB.dto.CreateUserDto;
-import tkstudy.restservice.accessingDB.dto.UpdateUserDto;
-
-import java.util.Optional;
 
 @Controller
 @RequestMapping(path = "/user")
 public class UserController {
-    private final UserService userService;
 
-    public UserController(UserService userService) {
-        this.userService = userService;
-    }
+  private final UserService userService;
 
-    @PostMapping()
-    public @ResponseBody String createUser(@RequestBody CreateUserDto createUserDto){
-        return this.userService.createUser(createUserDto);
-    }
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
 
-    @GetMapping(path = "/all")
-    public @ResponseBody Iterable<User> getAllUser(){
-        return userService.getAllUser();
-    }
+  @PostMapping()
+  public @ResponseBody
+  String createUser(@RequestBody CreateUserDto createUserDto) {
+    return this.userService.createUser(createUserDto);
+  }
 
-    @PutMapping()
-    public @ResponseBody User updateNameById(@RequestParam Integer id, @RequestParam String name){
-        return userService.updateNameById(id, name);
-    }
+  @GetMapping(path = "/all")
+  public @ResponseBody
+  Iterable<User> getAllUser() {
+    return userService.getAllUser();
+  }
 
-    @DeleteMapping()
-    public @ResponseBody String deleteUserById(@RequestParam Integer id){
-        return userService.deleteUserById(id);
-    }
+  @PutMapping()
+  public @ResponseBody
+  User updateNameById(@RequestParam Integer id, @RequestParam String name) {
+    return userService.updateNameById(id, name);
+  }
 
-    @GetMapping()
-    public @ResponseBody Optional<User> getUserById(@RequestParam Integer id){
-        return userService.getUserById(id);
-    }
+  @DeleteMapping()
+  public @ResponseBody
+  String deleteUserById(@RequestParam Integer id) {
+    return userService.deleteUserById(id);
+  }
+
+  @GetMapping()
+  public @ResponseBody
+  Optional<User> getUserById(@RequestParam Integer id) {
+    return userService.getUserById(id);
+  }
 
 }

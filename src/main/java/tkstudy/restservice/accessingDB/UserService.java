@@ -1,5 +1,6 @@
 package tkstudy.restservice.accessingDB;
 
+import java.util.Optional;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
@@ -10,10 +11,9 @@ import tkstudy.restservice.accessingDB.domain.User;
 import tkstudy.restservice.accessingDB.domain.UserRepository;
 import tkstudy.restservice.accessingDB.dto.CreateUserDto;
 
-import java.util.Optional;
-
 @Service
 public class UserService {
+
   private final UserRepository userRepository;
 
   public UserService(UserRepository userRepository) {
@@ -21,7 +21,7 @@ public class UserService {
   }
 
   @Cacheable(value = "user", key = "#id")
-  public Optional<User> getUserById(Integer id){
+  public Optional<User> getUserById(Integer id) {
     try {
       Thread.sleep(5000);
     } catch (InterruptedException e) {
@@ -30,22 +30,22 @@ public class UserService {
     return this.userRepository.findById(id);
   }
 
-  @CacheEvict(value = "user", key="#id")
-  public String deleteUserById(Integer id){
-    try{
+  @CacheEvict(value = "user", key = "#id")
+  public String deleteUserById(Integer id) {
+    try {
       userRepository.deleteById(id);
-    }
-    catch(Exception e){
-      return "Error, cannot delete user by id:"+id;
+    } catch (Exception e) {
+      return "Error, cannot delete user by id:" + id;
     }
     return "Success";
   }
 
-  @CachePut(value = "user", key="#id")
-  public User updateNameById(Integer id, String name){
+  @CachePut(value = "user", key = "#id")
+  public User updateNameById(Integer id, String name) {
     Optional<User> queryUser = userRepository.findById(id);
-    if(!queryUser.isPresent())
+    if (!queryUser.isPresent()) {
       throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+    }
     User user = queryUser.get();
     user.setName(name);
     user = userRepository.save(user);
@@ -53,7 +53,7 @@ public class UserService {
 
   }
 
-  public String createUser(CreateUserDto createUserDto){
+  public String createUser(CreateUserDto createUserDto) {
     User user = new User();
     user.setName(createUserDto.getName());
     user.setEmail(createUserDto.getEmail());
@@ -61,7 +61,7 @@ public class UserService {
     return "Success";
   }
 
-  public Iterable<User> getAllUser(){
+  public Iterable<User> getAllUser() {
     return this.userRepository.findAll();
   }
 
