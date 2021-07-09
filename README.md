@@ -36,4 +36,4 @@ Then you can run the project with this command
 
 `./gradlew build`
 
-**If you have questions or problems from running the project, just Google it
+**If you have questions or problems from running the project, just Google it**
