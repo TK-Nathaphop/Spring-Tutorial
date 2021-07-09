@@ -37,7 +37,7 @@ public class UserService {
     } catch (Exception e) {
       return "Error, cannot delete user by id:" + id;
     }
-    return "Success";
+    return "Deleted";
   }
 
   @CachePut(value = "user", key = "#id")
