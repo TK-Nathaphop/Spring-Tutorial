@@ -1,4 +1,4 @@
-package tkstudy.restservice.consuming;
+package tkstudy.restservice.restAPIRequest;
 
 public class Value {
 
