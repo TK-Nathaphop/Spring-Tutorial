@@ -13,7 +13,7 @@ import org.springframework.data.redis.cache.RedisCacheConfiguration;
 import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
 import org.springframework.data.redis.serializer.RedisSerializationContext;
 import org.springframework.web.client.RestTemplate;
-import tkstudy.restservice.consuming.Quote;
+import tkstudy.restservice.restAPIRequest.Quote;
 
 @EnableCaching
 @SpringBootApplication
