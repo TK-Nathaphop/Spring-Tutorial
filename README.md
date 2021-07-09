@@ -13,7 +13,7 @@ My code from studying Java Spring Boot with Gradle.
   - Basic consumer and producer
 
 ## How to run it?
-** Note that this running project is based on local computer. **
+**Note that this running project is based on local computer.**
 If you want to run this project on server (for what?), you need to do it by yourself.
 (But if you do it, please tell me how did you run it (lol))
 
@@ -24,7 +24,7 @@ If you want to run this project on server (for what?), you need to do it by your
 - Gradle
 
 ### Run project
-First of all, you need to run `docker-compose` file to set up `MySQL`, `Redis`, and` `Kafka`.
+First of all, you need to run `docker-compose` file to set up `MySQL`, `Redis`, and `Kafka`.
 
 `docker-compose up`
 
@@ -36,4 +36,4 @@ Then you can run the project with this command
 
 `./gradlew build`
 
-** If you have questions or problems from running the project, just Google it **
+**If you have questions or problems from running the project, just Google it
